@@ -11,7 +11,7 @@ public void processActors(ArrayList<Actor> actors) {
 //The Flower class' darkening method: 
 protected static final double DARKENING_FACTOR = 0.05;
 public darkenChameleon()
-       Color c = getColor();
+    Color c = getColor();
     int red = (int) (c.getRed() * (1 - DARKENING_FACTOR));
     int green = (int) (c.getGreen() * (1 - DARKENING_FACTOR));
     int blue = (int) (c.getBlue() * (1 - DARKENING_FACTOR));
