@@ -1,0 +1,18 @@
+A new type of Critter has appeared.
+CupidCritter:
+	Will look at its 4 neighbors only. (directly ahead, to the back of, to the right and to the left of Cupid)
+	Will choose randomly whether to look up-down or sideways first.
+	If there are Actors (to the right && to the left) || (upwards && downwards), then
+	the pair will be turned pink (or red) and Cupid will switch locations with one of the members of the couple
+	(doesn't matter which member, can be random).
+
+TestCases:
+	1. Cupid has no neighbors or 1 member or 2 members but they're not across from one another:
+	    --> nothing should be performed, he should just take one move forward/turn
+	    2.
+	    x A x   or  x x x    ---->  x C x   or   x x x
+	    x C x       A C A           x A x        A A C
+	    x A x       x x x           x A x        x x x
+		   
+Illustrated above are the couples and their end positions after the move.
+x = empty space or other critters or flowers( doesn't really matter what the space is occupied by)
