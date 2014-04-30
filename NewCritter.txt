@@ -9,7 +9,7 @@ CupidCritter:
 TestCases:
 	1. Cupid has no neighbors or 1 member or 2 members but they're not across from one another:
 	    --> nothing should be performed, he should just take one move forward/turn
-	    2.
+	2.
 	    x A x   or  x x x    ---->  x C x   or   x x x
 	    x C x       A C A           x A x        A A C
 	    x A x       x x x           x A x        x x x
