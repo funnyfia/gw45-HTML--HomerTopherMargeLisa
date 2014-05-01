@@ -20,9 +20,32 @@
 *ChamelonCritter's makeMove() method: it will set the location to the nearest
 *TeacherCritter or AuthorityFigureCritter.
 */
+import info.gridworld.actor.Actor;
+import info.gridworld.actor.ActorWorld;
+import info.gridworld.grid.Location;
+import info.gridworld.actor.Critter;
+import info.gridworld.actor.Rock;
+import info.gridworld.actor.Flower;
 
-public class CynicalStuyvesantStudentCritter {
+import java.awt.Color;
+import java.util.ArrayList;
 
+public class CynicalStuyvesantStudentCritter extends Critter {
 
+    public CynicalStuyvesantStudentCritter() {
+	setColor(Color.GREEN);
+    }
 
+    public void processActors(ArrayList<Actor> actors) {
+	for (Actor a : actors) {
+	    if ((a instanceof Rock) || ((a instanceof Critter) && (!(a instanceof CynicalStuyvesantStudent)))) {
+		a.removeSelfFromGrid();
+	    }
+	}
+    }
+
+    public void makeMove(Location loc) {
+	setDirection(getLocation().getDirectionToward(loc));
+	super.makeMove(loc);
+    }
 }
