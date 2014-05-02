@@ -23,7 +23,7 @@
   int getNumRows() done
   ArrayList<Location> getOccupiedLocations() done
   boolean isValid(Location loc) done
-  E remove (Location loc) 
+  E remove (Location loc) done(?) I think, I did not test this method...
 
  */
 import info.gridworld.grid.*;
@@ -102,7 +102,23 @@ public class SparseBoundedGrid<E> extends AbstractGrid<E>{
 	E theOccupant = get(loc); 
 	SparseGridNode temp = nodeArray[loc.getRow()];
 	
+	//because these are nodes, we have to remove the extra link
+	//will use my code from LList to model my removal
+	
+	if(temp != null) {
+	    if(temp.getColumn() == loc.getCol() )
+		nodeArray[loc.getRow()] = temp.getNext();
+	    else {
+		SparseGridNode nextLinkFinder = temp.getNext();
+		while(nextLinkFinder.getColumn() != loc.getCol()) {
+		    nextLinkFinder = nextLinkFinder.getNext();
+		    temp = temp.getNext();
+		}
+		if (nextLinkFinder != null) //because if the nextLinkFinder is null, then you're at the end of the list and there won't be a next object
+		    temp.setNext(nextLinkFinder.getNext());
 
+	    }
+	}
 	return theOccupant;
     }
     
