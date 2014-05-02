@@ -18,15 +18,12 @@
   Needs to have all methods in the Grid interface
 
  */
+import info.gridworld.grid.*;
 import java.util.*;
 
-public class SparseBoundedGrid {
+public class SparseBoundedGrid extends AbstractGrid{
 
-    private Object occupant;
-    private int col;
-    /*Because I will be using SparseGridNode, I have to create a separate
-    class for it */
-    private SparseGridNode next;
+
     
     
     
