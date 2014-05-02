@@ -23,7 +23,7 @@
   int getNumRows() done
   ArrayList<Location> getOccupiedLocations() done
   boolean isValid(Location loc) done
-  E remove (Location loc)
+  E remove (Location loc) 
 
  */
 import info.gridworld.grid.*;
@@ -39,7 +39,7 @@ public class SparseBoundedGrid<E> extends AbstractGrid<E>{
 	    throw new IndexOutOfBoundsException("Either the given column or given row is not valid");	
 	rows = r; //length of nodeArray (which stores the Nodes)
 	cols = c; //MAX length of each LinkedList stored in nodeArray
-	nodeArray = new nodeArray[rows];
+	nodeArray = new SparseGridNode[rows];
     }
     
     public E get(Location loc) {
@@ -64,7 +64,7 @@ public class SparseBoundedGrid<E> extends AbstractGrid<E>{
     }
     
     public ArrayList<Location> getOccupiedLocations() {
-	ArrayList<Location> allLoci = new ArayList<Location>();
+	ArrayList<Location> allLoci = new ArrayList<Location>();
 
 	//Will go through all of the linkedLists in the nodeArray
 	for(int r = 0; r < getNumRows(); r++) {
@@ -73,7 +73,7 @@ public class SparseBoundedGrid<E> extends AbstractGrid<E>{
 	    while(temp != null) {
 		Location loc = new Location(r, temp.getColumn());
 		allLoci.add(loc); //will add the locus to the arrayList to be returned at the end
-		temp - tem.getNext();
+		temp = temp.getNext();
 	    }
 	}
 	//since we went through all the rows & their corresponding columns, we got all the appropriate loci.
@@ -93,7 +93,18 @@ public class SparseBoundedGrid<E> extends AbstractGrid<E>{
     
     }
     
-    
+    public E remove(Location loc) {
+	
+	//if it's not a valid location to remove, throw an exception:
+	if(!isValid(loc))
+	    throw new IndexOutOfBoundsException("The location provided is invalid");
+	
+	E theOccupant = get(loc); 
+	SparseGridNode temp = nodeArray[loc.getRow()];
+	
+
+	return theOccupant;
+    }
     
 
 }

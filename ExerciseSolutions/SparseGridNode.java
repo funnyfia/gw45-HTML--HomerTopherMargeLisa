@@ -18,7 +18,7 @@ public class SparseGridNode {
     public Object getOccupant() {
 	return occupant;
     }
-    public int getPos() {
+    public int getColumn() {
 	return pos;
     }
     
@@ -31,7 +31,7 @@ public class SparseGridNode {
 	this.occupant = occupant;
     }
     
-    public void setPos(int pos) {
+    public void setColumn(int pos) {
 	this.pos = pos;
     }
     
