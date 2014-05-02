@@ -22,7 +22,7 @@
   int getNumCols() done
   int getNumRows() done
   ArrayList<Location> getOccupiedLocations()
-  boolean isValid(Location loc)
+  boolean isValid(Location loc) done
   E remove (Location loc)
 
  */
@@ -50,11 +50,22 @@ public class SparseBoundedGrid<E> extends AbstractGrid<E>{
 	return cols;
     }
     
+    public ArrayList<Location> getOccupiedLocations() {
+	ArrayList<Location> allLocations = new ArayList<Location>();
+	
+    }
+
     public boolean isValid(Location loc) {
 	/* in order to be valid, the location must have a position greater
 	   than or equal to 0 for both row and col and must be less than
 	   the total length
 	 */
+	if( loc.getRow() < 0 || loc.getRow() >= getNumRows() || loc.getCol() < 0
+	    || loc.getCol >= getNumCols()) 
+	    return false;
+	else
+	    return true;
+    
     }
     
     
