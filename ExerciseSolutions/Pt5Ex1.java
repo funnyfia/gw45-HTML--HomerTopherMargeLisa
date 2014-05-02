@@ -17,8 +17,14 @@
   r = length of sparse array (note to self: NOT arraylist)
   c = MAX length of linked list
   
-  Needs to have all methods in the Grid interface
-  
+  Needs to have all methods in the Grid interface:
+  E get(Location loc)
+  int getNumCols()
+  int getNumRows()
+  ArrayList<Location> getOccupiedLocations()
+  boolean isValid(Location loc)
+  E remove (Location loc)
+
  */
 import info.gridworld.grid.*;
 import java.util.*;
