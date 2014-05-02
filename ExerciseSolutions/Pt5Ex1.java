@@ -15,6 +15,8 @@
   For a grid with r rows and c columns, sparse array has length r and each
   linked list has a maximum length c.
 
+  Needs to have all methods in the Grid interface
+
  */
 import java.util.*;
 
@@ -22,8 +24,11 @@ public class SparseBoundedGrid {
 
     private Object occupant;
     private int col;
+    /*Because I will be using SparseGridNode, I have to create a separate
+    class for it */
     private SparseGridNode next;
-
-
+    
+    
+    
 
 }
