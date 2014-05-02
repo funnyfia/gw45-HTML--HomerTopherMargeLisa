@@ -21,7 +21,7 @@
   E get(Location loc)
   int getNumCols() done
   int getNumRows() done
-  ArrayList<Location> getOccupiedLocations()
+  ArrayList<Location> getOccupiedLocations() done
   boolean isValid(Location loc) done
   E remove (Location loc)
 
@@ -51,8 +51,20 @@ public class SparseBoundedGrid<E> extends AbstractGrid<E>{
     }
     
     public ArrayList<Location> getOccupiedLocations() {
-	ArrayList<Location> allLocations = new ArayList<Location>();
-	
+	ArrayList<Location> allLoci = new ArayList<Location>();
+
+	//Will go through all of the linkedLists in the nodeArray
+	for(int r = 0; r < getNumRows(); r++) {
+
+	    SparseGridNode temp = nodeArray[r]; //keeps track of current Node we're looking at
+	    while(temp != null) {
+		Location loc = new Location(r, temp.getColumn());
+		allLoci.add(loc); //will add the locus to the arrayList to be returned at the end
+		temp - tem.getNext();
+	    }
+	}
+	//since we went through all the rows & their corresponding columns, we got all the appropriate loci.
+	return allLoci;
     }
 
     public boolean isValid(Location loc) {
