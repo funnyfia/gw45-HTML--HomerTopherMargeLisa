@@ -14,16 +14,24 @@
 
   For a grid with r rows and c columns, sparse array has length r and each
   linked list has a maximum length c.
-
+  r = length of sparse array (note to self: NOT arraylist)
+  c = MAX length of linked list
+  
   Needs to have all methods in the Grid interface
-
+  
  */
 import info.gridworld.grid.*;
 import java.util.*;
 
 public class SparseBoundedGrid extends AbstractGrid{
 
+    
 
+    public SparseBoundedGrid(int r, int c) {
+	if (r <= 0 || c <= 0) 
+	    throw new IndexOutOfBoundsException();
+	
+    }
     
     
     
