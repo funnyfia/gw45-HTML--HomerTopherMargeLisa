@@ -1,0 +1,26 @@
+  GNU nano 2.2.6         File: QuickCrab.java                          
+
+import info.gridworld.actor.Actor;
+import info.gridworld.actor.Critter;
+import info.gridworld.grid.Grid;
+import info.gridworld.grid.Location;
+
+import java.awt.Color;
+import java.util.ArrayList;
+
+public class QuickCrab.java extends CrabCritter {
+        public ArrayList<Location> Move() {
+                public void Controls() {
+                Grid<Actor> g = getGrid();
+                Location l = getLocation().getAdjacentLocation(directi$
+                if(g.isValid(loc) 
+                && g.get(l) == null)
+                {
+                l = l.getAdjacentLocation(direction);
+                if(g.isValid(l) && g.get(l) == null)
+                        l.add(l);
+                }       
+        }
+
+}//end class
+
