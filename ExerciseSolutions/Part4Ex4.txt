@@ -1,0 +1,44 @@
+import info.gridworld.actor.Actor; 
+import info.gridworld.actor.Critter; 
+import info.gridworld.grid.Grid; 
+import info.gridworld.grid.Location; 
+ 
+import java.awt.Color; 
+import java.util.ArrayList; 
+ 
+//Needed to add distanceFrom and move methods to fit KingCrab specs, and change processActors.
+public class KingCrab extends CrabCritter { 
+ public KingCrab() { 
+  setColor(Color.RED); 
+ } 
+ 
+ 
+ public int distanceFrom(Location loc1, Location loc2) { 
+  int kingx = loc1.getRow(); 
+  int kingy = loc1.getCol(); 
+  int destx = loc2.getRow(); 
+  int desty = loc2.getCol(); 
+  double ans = Math.sqrt((kingx - destx)*(kingx - destx) + (kingy - desty)*(kingy - desty)) + .5; 
+  return (int)Math.floor(ans); //SO SMART THE PLUS .5 AFTER THE DISTANCE FORMULA GUARANTEES ROUNDING TO THE NEAREST INT!!
+ } 
+ 
+ private boolean move(Actor actor) { 
+  ArrayList<Location> locs = getGrid().getEmptyAdjacentLocations(actor.getLocation()); 
+  for(Location x : locs) { 
+   if(distanceFrom(getLocation(), x) > 1) { 
+    actor.moveTo(x); 
+    return true; 
+   } 
+  } 
+  return false; 
+ } 
+ 
+ 
+ public void processActors(ArrayList<Actor> actors) { 
+  for (Actor a : actors) { 
+   if (!moveOneMoreAway(a)) { 
+    a.removeSelfFromGrid(); 
+   } 
+  } 
+ } 
+} 
