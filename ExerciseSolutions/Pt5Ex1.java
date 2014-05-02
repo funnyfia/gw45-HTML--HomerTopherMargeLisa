@@ -18,7 +18,7 @@
   c = MAX length of linked list
   
   Needs to have all methods in the Grid interface:
-  E get(Location loc)
+  E get(Location loc) done
   int getNumCols() done
   int getNumRows() done
   ArrayList<Location> getOccupiedLocations() done
@@ -36,10 +36,23 @@ public class SparseBoundedGrid<E> extends AbstractGrid<E>{
     
     public SparseBoundedGrid(int r, int c) {
 	if (r <= 0 || c <= 0) 
-	    throw new IndexOutOfBoundsException();	
+	    throw new IndexOutOfBoundsException("Either the given column or given row is not valid");	
 	rows = r; //length of nodeArray (which stores the Nodes)
 	cols = c; //MAX length of each LinkedList stored in nodeArray
 	nodeArray = new nodeArray[rows];
+    }
+    
+    public E get(Location loc) {
+	//First thing to do: check if the locus is valid~
+	//If invalid, throw exception
+	if (!isValid(loc))
+	    throw new IndexOutOfBoundsException("The given locus is not valid");
+	SparseGridNode temp = nodeArray[loc.getRow()]; //getRow() rather than column because positions in nodeArray are indicated by variable rows
+	while(!(temp == null)) {
+	    if(loc.getCol() == temp.getColumn()) 
+		return (E) temp.getOccupant();// because I declared the other class as Object...
+	    temp = temp.getNext(); //remember to increment! I almost forgot T.T
+	}
     }
     
     public int getNumRows() {
